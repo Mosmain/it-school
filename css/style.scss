@@ -290,37 +290,7 @@ header {
 	}
 }
 
-.slider-pro {
-	height: 100%;
 
-	.carousel {
-		background: $font-color;
-	}
-
-	.carousel-item {
-		.w-large {
-			width: 40%;
-		}
-		.carousel-caption {
-			color: $secondary-color;
-			width: 60%;
-			left: auto;
-			right: auto;
-			bottom: auto;
-			text-align: left;
-			padding-left: 20px;
-			font-family: $rubik;
-
-			h5 {
-				font-size: 4vw;
-			}
-
-			p {
-				font-weight: 300;
-			}
-		}
-	}
-}
 
 
 @media (max-width: 991px) {
