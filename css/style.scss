@@ -272,7 +272,7 @@ header {
 			color: $secondary-color;
 			font-family: $roboto;
 			font-weight: 300;
-			font-style: 16px;
+			font-size: 16px;
 		}
 
 		.button-card {
@@ -290,7 +290,78 @@ header {
 	}
 }
 
+footer {
+	background: $main-color;
+	font-family: $rubik;
+	font-weight: lighter;
+	font-size: 18px;
+	color: $secondary-color;
+	height: 200px;
 
+	i {
+		font-size: 50px;
+		color: $secondary-color;
+	}
+
+	a {
+		i {
+			color: $secondary-color;
+
+			&:hover {
+				color: $font-color;
+			}
+		}
+	}
+
+	.container {
+		height: 150px;
+
+		.location {
+			height: 150px;
+			display: flex;
+			flex-flow: column;
+			justify-content: center;
+
+			.map {
+				margin-top: 5px;
+			}
+
+			.phone, .map {
+				display: flex;
+				align-items: center;
+
+				i {
+					display: flex;
+					align-self: center;
+				}
+
+				span {
+					justify-content: center;
+					display: flex;
+					flex-direction: column;
+					margin-left: 15px;
+				}
+			}
+		}
+
+		.social-link {
+			display: flex;
+			justify-content: end;
+		}
+	}
+
+	.copyright {
+		display: flex;
+		justify-content: center;
+		background: $font-color;
+		height: 50px;
+
+		span {
+			display: flex;
+			align-self: center;
+		}
+	}
+}
 
 
 @media (max-width: 991px) {
@@ -328,10 +399,10 @@ header {
 			.w-large {
 				width: 100% !important;
 			}
+
 			.carousel-caption {
 				position: relative;
 			}
 		}
 	}
 }
-
