@@ -296,7 +296,6 @@ footer {
 	font-weight: lighter;
 	font-size: 18px;
 	color: $secondary-color;
-	height: 200px;
 
 	i {
 		font-size: 50px;
@@ -314,7 +313,7 @@ footer {
 	}
 
 	.container {
-		height: 150px;
+		// height: 150px;
 
 		.location {
 			height: 150px;
@@ -346,7 +345,17 @@ footer {
 
 		.social-link {
 			display: flex;
-			justify-content: end;
+			justify-content: center;
+
+			a {
+				margin-top: 25px;
+				margin-bottom: 25px;
+				padding-left: 25px;
+
+				&:first-child {
+					padding-left: 0px;
+				}
+			}
 		}
 	}
 
@@ -404,5 +413,10 @@ footer {
 				position: relative;
 			}
 		}
+	}
+
+	footer .container .social-link a {
+		justify-content: center;
+		margin-top: 0px;
 	}
 }

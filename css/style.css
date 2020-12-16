@@ -285,7 +285,6 @@ footer {
   font-weight: lighter;
   font-size: 18px;
   color: #F5F5F5;
-  height: 200px;
 }
 
 footer i {
@@ -299,10 +298,6 @@ footer a i {
 
 footer a i:hover {
   color: #3A3A3A;
-}
-
-footer .container {
-  height: 150px;
 }
 
 footer .container .location {
@@ -358,9 +353,19 @@ footer .container .social-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .container .social-link a {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-left: 25px;
+}
+
+footer .container .social-link a:first-child {
+  padding-left: 0px;
 }
 
 footer .copyright {
@@ -411,6 +416,12 @@ footer .copyright span {
   }
   .carousel-pro .carousel-item .carousel-caption {
     position: relative;
+  }
+  footer .container .social-link a {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 0px;
   }
 }
 /*# sourceMappingURL=style.css.map */
