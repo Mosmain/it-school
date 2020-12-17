@@ -18,14 +18,14 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Rubik:wght@300;500&display=swap"
 		rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 		integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
 		crossorigin="anonymous"></script>
-	<script src="./js/typed.js"></script>
+	<script src="./assets/js/typed.js"></script>
 
 	<title>Hello, world!</title>
 </head>

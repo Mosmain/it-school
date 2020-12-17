@@ -1,5 +1,5 @@
 	<!-- include header -->
-	<?php include_once("include/header.php"); ?>
+	<?php include_once("assets/include/header.php"); ?>
 
 	<section class="main-section">
 
@@ -60,7 +60,7 @@
 
 			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
-				<?php include_once('dbсonnection.php');
+				<?php include_once('assets/dbсonnection.php');
 
 				$stmt = $pdo->query('SELECT * FROM it_school.cards;');
 				while ($row = $stmt->fetch())
@@ -134,7 +134,7 @@
 	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-	<script src="js/console.js"></script>
+	<script src="assets/js/console.js"></script>
 </body>
 
 </html>
