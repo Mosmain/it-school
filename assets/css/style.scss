@@ -27,12 +27,12 @@ header {
 	height: 85px;
 	position: sticky;
 	top: 0;
-	z-index: 1050;
+	z-index: 600;
 
 	.navbar {
 		box-shadow: $menu-shadow;
 		background: $secondary-color;
-		z-index: 1000;
+		z-index: 500;
 
 		.navbar-toggler {
 			border: none;

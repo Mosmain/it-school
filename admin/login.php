@@ -2,6 +2,10 @@
 	require 'db.php';
 
 	$data = $_POST;
+	if ( isset($data['do_logout']) ) {
+		unset($_SESSION['logged_user']);
+		echo '<div style="color:red;">Вы не авторизованы!</div><hr>';
+	}
 	if ( isset($data['do_login']) )
 	{
 		$user = R::findOne('users', 'login = ?', array($data['login']));
@@ -13,8 +17,8 @@
 				//если пароль совпадает, то нужно авторизовать пользователя
 				$_SESSION['logged_user'] = $user;
 				echo '<div style="color:green;">Вы авторизованы!<br/> Можете перейти на <a href="./">главную</a> страницу.</div><hr>';
-			}else
-			{
+			}
+			else {
 				$errors[] = 'Неверно введен пароль!';
 			}
 
@@ -22,13 +26,12 @@
 		{
 			$errors[] = 'Пользователь с таким логином не найден!';
 		}
-		
+
 		if ( ! empty($errors) )
 		{
 			//выводим ошибки авторизации
 			echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
 		}
-
 	}
 
 ?>
@@ -42,4 +45,5 @@
 	<input type="password" name="password" value="<?php echo @$data['password']; ?>"><br/>
 
 	<button type="submit" name="do_login">Войти</button>
+	<button type="submit" name="do_logout">Выход</button>
 </form>

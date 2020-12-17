@@ -1,6 +1,6 @@
-<?php 
+<!-- <?php 
 	require 'db.php';
-?>
+?> -->
 
 <?php if ( isset ($_SESSION['logged_user']) ) : ?>
 	Авторизован! <br/>

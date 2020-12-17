@@ -1,5 +1,11 @@
 	<!-- include header -->
-	<?php include_once("assets/include/header.php"); ?>
+	<?php
+
+	require_once('./admin/db.php');
+
+	include_once("assets/include/header.php");
+
+	?>
 
 	<section class="main-section">
 
@@ -60,8 +66,7 @@
 
 			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
-				<?php include_once('assets/dbсonnection.php');
-
+				<?php
 				$stmt = $pdo->query('SELECT * FROM it_school.cards;');
 				while ($row = $stmt->fetch())
 				{
