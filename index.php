@@ -60,14 +60,15 @@
 
 			<div class="row row-cols-1 row-cols-lg-3">
 
-				<?php include('dbсonnection.php'); 
-				
-				$stmt = $pdo->query('SELECT * FROM it_school.cards');
+				<?php include_once('dbсonnection.php');
+
+
+				$stmt = $pdo->query('SELECT * FROM it_school.cards;');
 				while ($row = $stmt->fetch())
 				{
 					echo '<div class="col mb-4">
 					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
+						<img src="' . $row['img'] . '" class="card-img-top" alt="...">
 						<div class="title">
 							<h5 class="card-title">' . $row['title'] . '</h5>
 						</div>
@@ -83,10 +84,7 @@
 					</div>
 				</div>';
 				}
-
 				?>
-
-			
 
 				<!-- <div class="col mb-4">
 					<div class="card">
