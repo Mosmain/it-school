@@ -60,7 +60,55 @@
 
 			<div class="row row-cols-1 row-cols-lg-3">
 
-				<div class="col mb-4">
+				<?php include('dbсonnection.php'); 
+				
+				$stmt = $pdo->query('SELECT * FROM it_school.cards');
+				while ($row = $stmt->fetch())
+				{
+					echo '<div class="col mb-4">
+					<div class="card">
+						<img src="img/android.png" class="card-img-top" alt="...">
+						<div class="title">
+							<h5 class="card-title">' . $row['title'] . '</h5>
+						</div>
+						<div class="price">
+							<h6>от <big>' . $row['price'] . '₽</big> /мес</h6>
+						</div>
+						<div class="card-body">
+							<p class="card-text">' . $row['descr'] . '</p>
+						</div>
+						<div class="button-card">
+							<button type="button" class="btn btn-light">Купить</button>
+						</div>
+					</div>
+				</div>';
+				}
+
+				?>
+
+			
+
+				<!-- <div class="col mb-4">
+					<div class="card">
+						<img src="img/android.png" class="card-img-top" alt="...">
+						<div class="title">
+							<h5 class="card-title">MOBILE DEV</h5>
+						</div>
+						<div class="price">
+							<h6>от <big>14 790₽</big> /мес</h6>
+						</div>
+						<div class="card-body">
+							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
+								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
+								программировали. </p>
+						</div>
+						<div class="button-card">
+							<button type="button" class="btn btn-light">Купить</button>
+						</div>
+					</div>
+				</div> -->
+
+				<!-- <div class="col mb-4">
 					<div class="card">
 						<img src="img/android.png" class="card-img-top" alt="...">
 						<div class="title">
@@ -158,27 +206,8 @@
 							<button type="button" class="btn btn-light">Купить</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 

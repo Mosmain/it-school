@@ -348,7 +348,6 @@ footer {
 			justify-content: center;
 
 			a {
-				margin-top: 25px;
 				margin-bottom: 25px;
 				padding-left: 25px;
 
@@ -417,6 +416,11 @@ footer {
 
 	footer .container .social-link a {
 		justify-content: center;
-		margin-top: 0px;
+	}
+}
+
+@media (min-width: 768px) {
+	footer .container .social-link a {
+		margin-top: 25px;
 	}
 }

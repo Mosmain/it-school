@@ -359,7 +359,6 @@ footer .container .social-link {
 }
 
 footer .container .social-link a {
-  margin-top: 25px;
   margin-bottom: 25px;
   padding-left: 25px;
 }
@@ -421,7 +420,12 @@ footer .copyright span {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 0px;
+  }
+}
+
+@media (min-width: 768px) {
+  footer .container .social-link a {
+    margin-top: 25px;
   }
 }
 /*# sourceMappingURL=style.css.map */
