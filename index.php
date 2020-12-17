@@ -62,7 +62,6 @@
 
 				<?php include_once('dbсonnection.php');
 
-
 				$stmt = $pdo->query('SELECT * FROM it_school.cards;');
 				while ($row = $stmt->fetch())
 				{
@@ -85,127 +84,6 @@
 				</div>';
 				}
 				?>
-
-				<!-- <div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div> -->
-
-				<!-- <div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col mb-4">
-					<div class="card">
-						<img src="img/android.png" class="card-img-top" alt="...">
-						<div class="title">
-							<h5 class="card-title">MOBILE DEV</h5>
-						</div>
-						<div class="price">
-							<h6>от <big>14 790₽</big> /мес</h6>
-						</div>
-						<div class="card-body">
-							<p class="card-text">Вы освоите разработку под самую популярную мобильную платформу,
-								создадите своё приложение и выложите его в Google Play, даже если до этого вы никогда не
-								программировали. </p>
-						</div>
-						<div class="button-card">
-							<button type="button" class="btn btn-light">Купить</button>
-						</div>
-					</div>
-				</div> -->
-
 			</div>
 		</div>
 
