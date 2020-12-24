@@ -82,12 +82,12 @@
     <div class="collapse navbar-collapse justify-content-end shopping-icon" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="cart.php">
             <span class="fa-stack">
               <span class="fas fa-shopping-cart fa-stack-2x"></span>
               <span class="fa-stack">
                 <span class="fas fa-circle"></span>
-                <storng class="fa-stack-1x">2</storng>
+                <storng id="cart-item" class="fa-stack-1x"></storng>
               </span>
             </span>
           </a>

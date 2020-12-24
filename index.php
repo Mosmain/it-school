@@ -67,7 +67,7 @@ include_once("assets/include/header.php");
 		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
 			<?php
-			$stmt = $pdo->query('SELECT * FROM it_school.cards;');
+			$stmt = $pdo->query('SELECT * FROM it_school.product;');
 			while ($row = $stmt->fetch())
 			{
 				echo '<div class="col mb-4">
@@ -82,9 +82,17 @@ include_once("assets/include/header.php");
 					<div class="card-body">
 						<p class="card-text">' . $row['descr'] . '</p>
 					</div>
-					<div class="button-card">
-						<button type="button" class="btn btn-light">Купить</button>
-					</div>
+					<form action="" class="form-submit">
+						<input type="hidden" class="pid" value="' . $row['id'] . '">
+						<input type="hidden" class="pname" value="' . $row['title'] . '">
+						<input type="hidden" class="pprice" value="' . $row['price'] . '">
+						<input type="hidden" class="pimage" value="' . $row['img'] . '">
+						<input type="hidden" class="pcode" value="' . $row['code'] . '">
+						<input type="hidden" class="pqty" value="' . $row['qty'] . '">
+						<div class="button-card">
+							<button class="btn btn-light addItemBtn">Купить</button>
+						</div>
+					</form>
 				</div>
 			</div>';
 			}
@@ -128,9 +136,7 @@ include_once("assets/include/header.php");
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
@@ -140,6 +146,56 @@ include_once("assets/include/header.php");
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
 <script src="assets/js/console.js"></script>
+<script src="assets/js/cart.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		// Send product details in the server
+		$(".addItemBtn").click(function (e) {
+			e.preventDefault();
+			var $form = $(this).closest(".form-submit");
+			var pid = $form.find(".pid").val();
+			var pname = $form.find(".pname").val();
+			var pprice = $form.find(".pprice").val();
+			var pimage = $form.find(".pimage").val();
+			var pcode = $form.find(".pcode").val();
+
+			var pqty = $form.find(".pqty").val();
+
+			$.ajax({
+				url: 'action.php',
+				method: 'post',
+				data: {
+					pid: pid,
+					pname: pname,
+					pprice: pprice,
+					pqty: pqty,
+					pimage: pimage,
+					pcode: pcode
+				},
+				success: function (response) {
+					$('#message').html(response);
+					window.scrollTo(0, 0);
+					load_cart_item_number();
+				}
+			});
+		});
+		// Load total no.of items added in the cart and display in the navbar
+		load_cart_item_number();
+
+		function load_cart_item_number() {
+			$.ajax({
+				url: 'action.php',
+				method: 'get',
+				data: {
+					cartItem: "cart_item"
+				},
+				success: function (response) {
+					$('#cart-item').html(response);
+				}
+			});
+		}
+	});
+</script>
 </body>
 
 </html>
