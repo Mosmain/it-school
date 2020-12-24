@@ -18,14 +18,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Rubik:wght@300;500&display=swap"
 		rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 		integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
 		crossorigin="anonymous"></script>
-	<script src="./assets/js/typed.js"></script>
 
 	<title>Hello, world!</title>
 </head>
@@ -52,7 +51,7 @@
     <div class="collapse navbar-collapse justify-content-center header-link" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link header-link" href="#">
+          <a class="nav-link header-link" href="../">
             <span data-content="Главная">Главная</span>
           </a>
         </li>
@@ -61,45 +60,22 @@
             <span data-content="Курсы">Курсы</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link header-link" href="admin">
-            <span data-content="Преподаватели">Преподаватели</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link header-link" href="#">
-            <span data-content="Отзывы">Отзывы</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link header-link" href="#">
-            <span data-content="Контакты">Контакты</span>
-          </a>
-        </li>
       </ul>
     </div>
 
     <div class="collapse navbar-collapse justify-content-end shopping-icon" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span class="fa-stack">
-              <span class="fas fa-shopping-cart fa-stack-2x"></span>
-              <span class="fa-stack">
-                <span class="fas fa-circle"></span>
-                <storng class="fa-stack-1x">2</storng>
-              </span>
-            </span>
-          </a>
-        </li>
+
+        <li class="nav-item align-self-center"><?php echo $_SESSION['logged_admin']->login; ?></li>
+        
         <li class="nav-item">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#auth">
-            
-            <?php if ( isset ($_SESSION['logged_user']) ) : ?>
-              <i class="fas fa-user"></i>
-            <?php else : ?>
-              <i class="fas fa-sign-in-alt"></i>
-            <?php endif; ?>
+
+          <?php if ( isset ($_SESSION['logged_admin']) ) : ?>
+            <i class="fas fa-user"></i>
+          <?php else : ?>
+            <i class="fas fa-sign-in-alt"></i>
+          <?php endif; ?>
 
           </a>
         </li>
@@ -108,4 +84,4 @@
   </nav>
 </header>
 
-<?php include('modal.php'); ?>
+<?php include('modalAdmin.php'); ?>
