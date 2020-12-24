@@ -24,18 +24,28 @@ if ( isset($data['do_login']) )
       ';
     }
     else {
-      $errors[] = 'Неверно введен пароль!';
+      $errors[] = '
+        <strong>Неверно введен пароль!</strong>
+      ';
     }
 
   }else
   {
-    $errors[] = 'Пользователь с таким логином не найден!';
+    $errors[] = '
+      <strong>Пользователь с таким логином не найден!</strong>
+  ';
   }
 
   if ( ! empty($errors) )
   {
     //выводим ошибки авторизации
-    echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
+    echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert">'
+    .array_shift($errors).
+    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>';
   }
 }
 
@@ -48,34 +58,46 @@ if ( isset($data['do_signup']) )
   $errors = array();
   if ( trim($data['login']) == '' )
   {
-    $errors[] = 'Введите логин';
+    $errors[] = '
+      <strong>Введите логин</strong>
+    ';
   }
 
   if ( trim($data['email']) == '' )
   {
-    $errors[] = 'Введите Email';
+    $errors[] = '
+      <strong>Введите Email</strong>
+    ';
   }
 
   if ( $data['password'] == '' )
   {
-    $errors[] = 'Введите пароль';
+    $errors[] = '
+      <strong>Введите пароль</strong>
+    ';
   }
 
   if ( $data['password_2'] != $data['password'] )
   {
-    $errors[] = 'Повторный пароль введен не верно!';
+    $errors[] = '
+      <strong>Повторный пароль введен не верно!</strong>
+    ';
   }
 
   //проверка на существование одинакового логина
   if ( R::count('users', "login = ?", array($data['login'])) > 0)
   {
-    $errors[] = 'Пользователь с таким логином уже существует!';
+    $errors[] = '
+      <strong>Пользователь с таким логином уже существует!</strong>
+    ';
   }
 
   //проверка на существование одинакового email
   if ( R::count('users', "email = ?", array($data['email'])) > 0)
   {
-    $errors[] = 'Пользователь с таким Email уже существует!';
+    $errors[] = '
+      <strong>Пользователь с таким логином уже существует!</strong>
+    ';
   }
 
   if ( empty($errors) )
@@ -86,10 +108,23 @@ if ( isset($data['do_signup']) )
     $user->email = $data['email'];
     $user->password = password_hash($data['password'], PASSWORD_DEFAULT); //пароль нельзя хранить в открытом виде, мы его шифруем при помощи функции password_hash для php > 5.6
     R::store($user);
-    echo '<div style="color:dreen;">Вы успешно зарегистрированы!</div><hr>';
+    echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Вы успешно зарегистрированы!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    ';
   }else
   {
-    echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
+    echo 
+    '<div class="alert alert-danger alert-dismissible fade show" role="alert">'
+    .array_shift($errors).
+    ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>';
   }
 }
 
