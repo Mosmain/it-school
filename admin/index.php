@@ -33,22 +33,160 @@
 			echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
 		}
 	}
-	
+
 ?>
 
 <?php if ( isset ($_SESSION['logged_admin']) ) : ?>
-	<?php 
+<?php
 
 	require '../assets/include/headerAdmin.php';
 
 	?>
+<style>
+	input[type="number"] {
+
+		-moz-appearance: textfield;
+
+		-webkit-appearance: textfield;
+
+		appearance: textfield;
+
+	}
+
+
+
+	input[type="number"]::-webkit-outer-spin-button,
+
+	input[type="number"]::-webkit-inner-spin-button {
+
+		display: none;
+
+	}
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 table-responsive">
+			<table class="table table-sm table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center">
+							<label for="id">ID:</label>
+						</th>
+						<th class="text-center">
+							<label for="title">Название:</label>
+						</th>
+						<th class="text-center">
+							<label for="price">Цена:</label>
+						</th>
+						<th class="text-center">
+							<label for="img">Изображение:</label>
+						</th>
+						<th class="text-center">
+							<label for="descr">Описание:</label>
+						</th>
+						<th class="text-center">
+							<label for="code">Код:</label>
+						</th>
+						<th class="text-center">
+							<label for="nothing">Обновить:</label>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$stmt = $pdo->query('SELECT * FROM it_school.product;');
+						while ($row = $stmt->fetch())
+						{
+							echo '
+							<form action="update.php" method="POST">
+							<tr>
+								<td class="tg-0lax">
+									<input class="form-control text-center" style="width: 50px;" type="number" id="id disabledTextInput" name="product_id" value="' . $row['id'] . '" disabled>
+								</td>
+								<td class="tg-0lax">
+									<input class="form-control text-center" style="width: 150px;" type="text" id="title" name="product_title" value="' . $row['title'] . '">
+								</td>
+								<td class="tg-0lax">
+									<input class="form-control text-center" style="width: 80px;" type="number" id="price" name="product_price" value="' . $row['price'] . '">
+								</td>
+								<td class="tg-0lax">
+									<input class="form-control" type="text" id="img" name="product_img" value="' . $row['img'] . '">
+								</td>
+								<td class="tg-0lax">
+									<textarea class="form-control text-center" style="min-width: 200px;" rows="5" cols="25" id="descr" name="product_descr" value="">' . $row['descr'] . '</textarea>
+								</td>
+								<td class="tg-0lax">
+									<input class="form-control text-center" style="width: 60px;" type="number" id="code" name="product_code" value="' . $row['code'] . '">
+								</td>
+								<td>
+									<input class="btn btn-primary float-right" type="submit" value="Обновить запись"></form>
+								</td>
+							<tr>
+							';
+						}
+						?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<h2>Добавление товаров</h2>
+				<form action="insert.php" method="POST">
+					<input type="hidden" type="text" id="qty" name="product_qty" value="1">
+					<div>
+						<label for="title">Название курса:</label>
+						<input class="form-control" type="text" id="title" name="product_title" required>
+					</div>
+					<div>
+						<label for="price">Цена:</label>
+						<input class="form-control" type="number" id="price" name="product_price" required>
+					</div>
+					<div>
+						<label for="img">Изображение:</label>
+						<input class="form-control" type="text" id="img" name="product_img">
+					</div>
+					<div>
+						<label for="descr">Описание:</label>
+						<textarea name="product_descr" class="form-control" id="descr" cols="30" rows="10"></textarea>
+					</div>
+					<div>
+						<label for="code">Код:</label>
+						<input class="form-control" type="text" id="code" name="product_code">
+					</div>
+					<input class="btn btn-primary float-right mt-3" type="submit" value="Отправить в БД">
+				</form>
+			</div>
+		</div>
+	</div>
+	<?php
+	echo "<form action='delete.php' method='POST'><table class='table table-sm table-bordered mt-3'>";
+    echo "<tr><th>id</th><th>Title</th><th>Author</th><th>Price</th><th>Discount</th><th>Удалить запись</th></tr>";
+	$stmt = $pdo->query('SELECT * FROM it_school.product;');
+	while ($row = $stmt->fetch())
+	{
+		echo "<tr>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>". $row['title'] ."</td>";
+        echo "<td>" . $row['price'] . "</td>";
+        echo "<td>" . $row['img'] . "</td>";
+		echo "<td>" . $row['descr'] . "</td>";
+        echo "<td>" . $row['code'] . "</td>";
+        echo "<td><input type='checkbox' name='delete_row[]' value='" . $row["id"] . "'></td>";
+        echo "</tr>";
+	}
+	echo "</table><br><input class='btn btn-primary float-right' type='submit' value='Удалить выделенные записи'></form>"; 
+	?>
+</div>
 Авторизован! <br />
 Привет, <?php echo $_SESSION['logged_admin']->login; ?>!<br />
 
 <a href="logout.php">Выйти</a>
 
 <?php else : ?>
-	<?php require_once 'login.php'; ?>
+<?php require_once 'login.php'; ?>
 <!-- Вы не авторизованы<br />
 <a href="login.php">Авторизация</a>
 <a href="signup.php">Регистрация</a> -->
