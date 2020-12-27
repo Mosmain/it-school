@@ -7,16 +7,13 @@ if ( isset($data['do_login']) )
   $user = R::findOne('admin', 'login = ?', array($data['login']));
   if ( $user )
   {
-    //логин существует
     if ( password_verify($data['password'], $user->password) )
     {
-      //если пароль совпадает, то нужно авторизовать пользователя
       $_SESSION['logged_admin'] = $user;
     }
   }
 
 }
-
 
 if ( isset($data['do_logout']) ) {
   unset($_SESSION['logged_admin']);
@@ -30,14 +27,7 @@ if ( isset ($_SESSION['logged_admin']) ) {
   $outModal = "Войдите";
 }
 
-
 ?>
-
-<!-- <?php if ( isset ($_SESSION['logged_admin']) ) : ?>
-TRUE
-<?php else : ?>
-FALSE
-<?php endif; ?> -->
 
 <div class="modal fade" id="auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require 'db.php';
 
 	$check = [];
@@ -13,10 +13,8 @@
 		$user = R::findOne('admins', 'login = ?', array($data['login']));
 		if ( $user )
 		{
-			//логин существует
 			if ( password_verify($data['password'], $user->password) )
 			{
-				//если пароль совпадает, то нужно авторизовать пользователя
 				$_SESSION['logged_admin'] = $user;
 				// echo '<div style="color:green;">Вы авторизованы!<br/> Можете перейти на <a href="./">главную</a> страницу.</div><hr>';
 			} else {
@@ -29,7 +27,6 @@
 
 		if ( ! empty($errors) )
 		{
-			//выводим ошибки авторизации
 			echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
 		}
 	}
@@ -38,34 +35,24 @@
 
 <?php if ( isset ($_SESSION['logged_admin']) ) : ?>
 <?php
-
-	require '../assets/include/headerAdmin.php';
-
-	?>
+require '../assets/include/headerAdmin.php';
+?>
 <style>
-	input[type="number"] {
+input[type="number"] {
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+}
 
-		-moz-appearance: textfield;
-
-		-webkit-appearance: textfield;
-
-		appearance: textfield;
-
-	}
-
-
-
-	input[type="number"]::-webkit-outer-spin-button,
-
-	input[type="number"]::-webkit-inner-spin-button {
-
-		display: none;
-
-	}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
 </style>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 table-responsive">
+			<h2>Изменение товаров</h2>
 			<table class="table table-sm table-bordered">
 				<thead>
 					<tr>
@@ -100,22 +87,22 @@
 							echo '
 							<form action="update.php" method="POST">
 							<tr>
-								<td class="tg-0lax">
+								<td>
 									<input class="form-control text-center" style="width: 50px;" type="number" id="id disabledTextInput" name="product_id" value="' . $row['id'] . '" disabled>
 								</td>
-								<td class="tg-0lax">
+								<td>
 									<input class="form-control text-center" style="width: 150px;" type="text" id="title" name="product_title" value="' . $row['title'] . '">
 								</td>
-								<td class="tg-0lax">
+								<td>
 									<input class="form-control text-center" style="width: 80px;" type="number" id="price" name="product_price" value="' . $row['price'] . '">
 								</td>
-								<td class="tg-0lax">
+								<td>
 									<input class="form-control" type="text" id="img" name="product_img" value="' . $row['img'] . '">
 								</td>
-								<td class="tg-0lax">
+								<td>
 									<textarea class="form-control text-center" style="min-width: 200px;" rows="5" cols="25" id="descr" name="product_descr" value="">' . $row['descr'] . '</textarea>
 								</td>
-								<td class="tg-0lax">
+								<td>
 									<input class="form-control text-center" style="width: 60px;" type="number" id="code" name="product_code" value="' . $row['code'] . '">
 								</td>
 								<td>
@@ -161,29 +148,41 @@
 			</div>
 		</div>
 	</div>
-	<?php
-	echo "<form action='delete.php' method='POST'><table class='table table-sm table-bordered mt-3'>";
-    echo "<tr><th>id</th><th>Title</th><th>Author</th><th>Price</th><th>Discount</th><th>Удалить запись</th></tr>";
-	$stmt = $pdo->query('SELECT * FROM it_school.product;');
-	while ($row = $stmt->fetch())
-	{
-		echo "<tr>";
-        echo "<td>" . $row['id'] . "</td>";
-        echo "<td>". $row['title'] ."</td>";
-        echo "<td>" . $row['price'] . "</td>";
-        echo "<td>" . $row['img'] . "</td>";
-		echo "<td>" . $row['descr'] . "</td>";
-        echo "<td>" . $row['code'] . "</td>";
-        echo "<td><input type='checkbox' name='delete_row[]' value='" . $row["id"] . "'></td>";
-        echo "</tr>";
-	}
-	echo "</table><br><input class='btn btn-primary float-right' type='submit' value='Удалить выделенные записи'></form>"; 
-	?>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<h2>Удаление товаров</h2>
+				<form action='delete.php' method='POST'>
+					<table class='table table-sm table-bordered mt-3 mb-0'>
+					<tr>
+						<th class='text-center'>id</th>
+						<th class='text-center'>Название:</th>
+						<th class='text-center'>Цена:</th>
+						<th class='text-center'>Изображение:</th>
+						<th class='text-center'>Описание:</th>
+						<th class='text-center'>Код:</th>
+						<th class='text-center'>Удалить запись</th>
+					</tr>
+				<?php
+					$stmt = $pdo->query('SELECT * FROM it_school.product;');
+					while ($row = $stmt->fetch())
+					{
+						echo "<tr>";
+						echo "<td class='text-center'>" . $row['id'] . "</td>";
+						echo "<td class='text-center'>". $row['title'] ."</td>";
+						echo "<td class='text-center'>" . $row['price'] . "</td>";
+						echo "<td class='text-center'>" . $row['img'] . "</td>";
+						echo "<td class='text-center'>" . $row['descr'] . "</td>";
+						echo "<td class='text-center'>" . $row['code'] . "</td>";
+						echo "<td><input type='checkbox' name='delete_row[]' value='" . $row["id"] . "'></td>";
+						echo "</tr>";
+					}
+					echo "</table><br><input class='btn btn-primary float-right' type='submit' value='Удалить выделенные записи'></form>";
+				?>
+			</div>
+		</div>
+	</div>
 </div>
-Авторизован! <br />
-Привет, <?php echo $_SESSION['logged_admin']->login; ?>!<br />
-
-<a href="logout.php">Выйти</a>
 
 <?php else : ?>
 <?php require_once 'login.php'; ?>

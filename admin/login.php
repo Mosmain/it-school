@@ -11,25 +11,25 @@ body {
 }
 
 .login-dark {
-  height:1000px;
-  background:#475d62 url(../assets/img/star-sky.jpg);
-  background-size:cover;
-  position:relative;
+  height: 1000px;
+  background: #475d62 url(../assets/img/star-sky.jpg);
+  background-size: cover;
+  position: relative;
   background-position: center center;
 }
 
 .login-dark form {
-  max-width:320px;
-  width:90%;
-  background-color:#1e2833;
-  padding:40px;
-  border-radius:4px;
-  transform:translate(-50%, -50%);
-  position:absolute;
-  top:50%;
-  left:50%;
-  color:#fff;
-  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+  max-width: 320px;
+  width: 90%;
+  background-color: #1e2833;
+  padding: 40px;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
 }
 
 .login-dark .illustration {
@@ -83,7 +83,6 @@ body {
   transform:translateY(1px);
 }
 
-
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -102,15 +101,4 @@ body {
 		</div>
 	</form>
 </div>
-
-<!-- <form action="/it-school/admin/index.php" method="POST">
-	<strong>Логин</strong>
-	<input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
-
-	<strong>Пароль</strong>
-	<input type="password" name="password" value="<?php echo @$data['password']; ?>"><br/>
-
-	<button type="submit" name="do_login">Войти</button>
-	<button type="submit" name="do_logout">Выход</button>
-</form> -->
 

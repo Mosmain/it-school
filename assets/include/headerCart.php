@@ -33,12 +33,12 @@
 <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand large-header" href="#">
+    <a class="navbar-brand large-header" href="./#">
       <!-- include big svg logo -->
       <?php include_once("bigLogo.html"); ?>
 
     </a>
-    <a class="navbar-brand small-header" href="#">
+    <a class="navbar-brand small-header" href="./#">
       <?php include_once("miniLogo.html"); ?>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -48,17 +48,17 @@
     <div class="collapse navbar-collapse justify-content-center header-link" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link header-link" href="#">
+          <a class="nav-link header-link" href="./#">
             <span data-content="Главная">Главная</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link header-link" href="#course">
+          <a class="nav-link header-link" href="./#course">
             <span data-content="Курсы">Курсы</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link header-link" href="#contacts">
+          <a class="nav-link header-link" href="./#contacts">
             <span data-content="Контакты">Контакты</span>
           </a>
         </li>
@@ -71,10 +71,6 @@
           <a class="nav-link" href="cart.php">
             <span class="fa-stack">
               <span class="fas fa-shopping-cart fa-stack-2x"></span>
-              <span class="fa-stack">
-                <span class="fas fa-circle"></span>
-                <storng id="cart-item" class="fa-stack-1x"></storng>
-              </span>
             </span>
           </a>
         </li>

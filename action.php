@@ -1,11 +1,7 @@
-<?php 
+<?php
 session_start();
 require 'config.php';
-	
-//Add products into the cart table
-//Добавить товары в корзину
 if (isset($_POST['pid'])) {
-	echo '+';
 	$pid = $_POST['pid'];
 	$pname = $_POST['pname'];
 	$pprice = $_POST['pprice'];
@@ -38,8 +34,6 @@ if (isset($_POST['pid'])) {
 		</div>';
 	}
 } else { echo '';}
-// Get no.of items available in the cart table
-// Получите количество товаров, доступных в таблице корзины
 if (isset($_GET['cartItem'])&&isset($_GET['cartItem']) == 'cart_item') {
 	$stmt = $conn->prepare('SELECT * FROM cart');
 	$stmt->execute();
@@ -47,31 +41,22 @@ if (isset($_GET['cartItem'])&&isset($_GET['cartItem']) == 'cart_item') {
 	$rows = $stmt->num_rows;
 	echo $rows;
 }
-
-// Remove single items from cart
-// Удалить отдельные товары из корзины
 if (isset($_GET['remove'])) {
 	$id = $_GET['remove'];
 	$stmt = $conn->prepare('DELETE FROM cart WHERE id=?');
 	$stmt->bind_param('i',$id);
 	$stmt->execute();
 	$_SESSION['showAlert'] = 'block';
-	$_SESSION['message'] = 'Item removed from the cart!';
+	$_SESSION['message'] = 'Предмет удален из корзины!';
 	header('location: cart.php');
 }
-
-// Remove all items at once from cart
-// Удалить сразу все товары из корзины
 if (isset($_GET['clear'])) {
 	$stmt = $conn->prepare('DELETE FROM cart');
 	$stmt->execute();
 	$_SESSION['showAlert'] = 'block';
-	$_SESSION['message'] = 'All Item removed from the cart!';
+	$_SESSION['message'] = 'Все предметы удалены из корзины!';
 	header('location:cart.php');
 }
-
-// Set total price of the product in the cart table
-// Установите общую стоимость товара в таблице корзины 
 if (isset($_POST['qty'])) {
 	$qty = $_POST['qty'];
 	$pid = $_POST['pid'];
@@ -81,13 +66,9 @@ if (isset($_POST['qty'])) {
 	$stmt->bind_param('isi',$qty,$tprice,$pid);
 	$stmt->execute();
 }
-
-// Checkout and save customer info in the orders table
-// Оформить заказ и сохранить информацию о клиенте в таблице заказов
 if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 
 	$all_pmode = array(
-		'cod' => 'оплата при доставке',
 		'netbanking' => 'Интернет кошелек',
 		'cards' => 'Дебетовая/кредитная карта'
 	);
@@ -100,17 +81,6 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 	$pmode = $all_pmode[ $_POST['pmode'] ];
 
 	$productSql = str_replace('<br>', ', ', $product);
-
-	// echo "productSql---".$productSql."<br>";
-	// echo "name---" .$name ."<br>";
-	// echo "email---" .$email ."<br>";
-	// echo "phone---" .$phone ."<br>";
-	// echo "product---" .$product ."<br>";
-	// echo "summa---" .$grand_total ."<br>";
-	// echo "adr---" .$addres ."<br>";
-	// echo "cod---" .$pmode ."<br>";
-	// die();
-
 
 	$data ='';
 	$stmt = $conn->prepare('INSERT INTO orders (name,email,phone,address,pmode,products,amount_paid) VALUES (?,?,?,?,?,?,?)');
@@ -132,7 +102,4 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
 		</div>';
 	echo $data;
 }
-
-//latin1_swedish_ci
-// INSERT INTO `orders`(`name`, `email`, `phone`, `address`, `pmode`, `products`, `amount_paid`) VALUES ('1','2','3','4','5','6','7')
 ?>

@@ -1,4 +1,3 @@
-<!-- include header -->
 <?php
 
 require_once('./admin/db.php');
@@ -8,7 +7,6 @@ include_once("assets/include/header.php");
 ?>
 
 <section class="main-section">
-
 	<svg class="animate__animated animate__fadeInDown animate__slow" width="100vw" height="745" viewBox="0 0 100 709"
 		fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path
@@ -41,26 +39,10 @@ include_once("assets/include/header.php");
 			</div>
 		</div>
 	</div>
-
-	<!-- <div class="container-fluid mArrow">
-		<div class="row">
-			<div class="col-12 arrow-block">
-				<div class="arrow">
-					<a href="#">
-						<svg class="onArrowBox" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path class="onArrow"
-								d="M18.7046 29.5779L3.86991 14.7432C3.15445 14.0277 3.15445 12.8678 3.86991 12.1524L5.60014 10.4221C6.31438 9.7079 7.47196 9.70652 8.18788 10.4191L20 22.1759L31.8121 10.4191C32.528 9.70652 33.6856 9.7079 34.3998 10.4221L36.1301 12.1524C36.8455 12.8678 36.8455 14.0278 36.1301 14.7432L21.2955 29.5779C20.58 30.2933 19.42 30.2933 18.7046 29.5779Z"
-								fill="#3A3A3A" fill-opacity="0.5" />
-						</svg>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
 </section>
 
 <section class="buy-section">
+	<a name="course"></a>
 	<h1>ВЫБЕРИ СВОЙ КУРС</h1>
 	<div class="container">
 
@@ -102,10 +84,6 @@ include_once("assets/include/header.php");
 
 </section>
 
-<section class="slider-pro">
-
-</section>
-
 <footer>
 	<div class="container">
 		<div class="row">
@@ -121,7 +99,7 @@ include_once("assets/include/header.php");
 				</div>
 			</div>
 			<div class="col-md-4 col-12 social-link">
-				<a href="#"><i class="fab fa-telegram"></i></a>
+				<a href="#" name="contacts"><i class="fab fa-telegram"></i></a>
 				<a href="#"><i class="fab fa-whatsapp-square"></i></a>
 				<a href="#"><i class="fab fa-twitter-square"></i></a>
 			</div>
@@ -131,8 +109,6 @@ include_once("assets/include/header.php");
 		<span>© 2020, Mosmain inc.</span>
 	</div>
 </footer>
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -149,7 +125,6 @@ include_once("assets/include/header.php");
 <script src="assets/js/cart.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		// Send product details in the server
 		$(".addItemBtn").click(function (e) {
 			e.preventDefault();
 			var $form = $(this).closest(".form-submit");
@@ -173,15 +148,14 @@ include_once("assets/include/header.php");
 					pcode: pcode
 				},
 				success: function (response) {
+					console.log('soska');
 					$('#message').html(response);
 					window.scrollTo(0, 0);
 					load_cart_item_number();
 				}
 			});
 		});
-		// Load total no.of items added in the cart and display in the navbar
 		load_cart_item_number();
-
 		function load_cart_item_number() {
 			$.ajax({
 				url: 'action.php',

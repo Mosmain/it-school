@@ -2,17 +2,13 @@
 
 $data = $_POST;
 
-// sign in
-
 if ( isset($data['do_login']) )
 {
   $user = R::findOne('users', 'login = ?', array($data['login']));
   if ( $user )
   {
-    //логин существует
     if ( password_verify($data['password'], $user->password) )
     {
-      //если пароль совпадает, то нужно авторизовать пользователя
       $_SESSION['logged_user'] = $user;
       echo '
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,8 +34,7 @@ if ( isset($data['do_login']) )
 
   if ( ! empty($errors) )
   {
-    //выводим ошибки авторизации
-    echo 
+    echo
     '<div class="alert alert-danger alert-dismissible fade show" role="alert">'
     .array_shift($errors).
     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -49,13 +44,10 @@ if ( isset($data['do_login']) )
   }
 }
 
-
-
-//если кликнули на button
 if ( isset($data['do_signup']) )
 {
-  // проверка формы на пустоту полей
   $errors = array();
+
   if ( trim($data['login']) == '' )
   {
     $errors[] = '
@@ -84,7 +76,6 @@ if ( isset($data['do_signup']) )
     ';
   }
 
-  //проверка на существование одинакового логина
   if ( R::count('users', "login = ?", array($data['login'])) > 0)
   {
     $errors[] = '
@@ -92,7 +83,6 @@ if ( isset($data['do_signup']) )
     ';
   }
 
-  //проверка на существование одинакового email
   if ( R::count('users', "email = ?", array($data['email'])) > 0)
   {
     $errors[] = '
@@ -102,11 +92,10 @@ if ( isset($data['do_signup']) )
 
   if ( empty($errors) )
   {
-    //ошибок нет, теперь регистрируем
     $user = R::dispense('users');
     $user->login = $data['login'];
     $user->email = $data['email'];
-    $user->password = password_hash($data['password'], PASSWORD_DEFAULT); //пароль нельзя хранить в открытом виде, мы его шифруем при помощи функции password_hash для php > 5.6
+    $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
     R::store($user);
     echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -118,7 +107,7 @@ if ( isset($data['do_signup']) )
     ';
   }else
   {
-    echo 
+    echo
     '<div class="alert alert-danger alert-dismissible fade show" role="alert">'
     .array_shift($errors).
     ' <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -140,14 +129,7 @@ if ( isset ($_SESSION['logged_user']) ) {
   $outModal = "Войдите";
 }
 
-
 ?>
-
-<!-- <?php if ( isset ($_SESSION['logged_user']) ) : ?>
-TRUE
-<?php else : ?>
-FALSE
-<?php endif; ?> -->
 
 <div class="modal fade" id="auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

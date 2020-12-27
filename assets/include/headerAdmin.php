@@ -26,22 +26,17 @@
 		integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
 		crossorigin="anonymous"></script>
 
-	<title>Hello, world!</title>
+	<title>It School</title>
 </head>
 
 <body>
 
-
-
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand large-header" href="#">
-      <!-- include big svg logo -->
+    <a class="navbar-brand large-header" href="../#">
       <?php include_once("bigLogo.html"); ?>
-
     </a>
-    <a class="navbar-brand small-header" href="#">
-      <!-- include mini svg logo -->
+    <a class="navbar-brand small-header" href="../#">
       <?php include_once("miniLogo.html"); ?>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -56,7 +51,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link header-link" href="#">
+          <a class="nav-link header-link" href="../#course">
             <span data-content="Курсы">Курсы</span>
           </a>
         </li>
@@ -67,7 +62,6 @@
       <ul class="navbar-nav">
 
         <li class="nav-item align-self-center"><?php echo $_SESSION['logged_admin']->login; ?></li>
-        
         <li class="nav-item">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#auth">
 
