@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 24 2020 г., 23:17
+-- Время создания: Дек 27 2020 г., 02:21
 -- Версия сервера: 10.3.16-MariaDB
 -- Версия PHP: 7.3.6
 
@@ -57,14 +57,6 @@ CREATE TABLE `cart` (
   `product_code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Дамп данных таблицы `cart`
---
-
-INSERT INTO `cart` (`id`, `product_name`, `product_price`, `product_image`, `qty`, `total_price`, `product_code`) VALUES
-(9, 'Java', 12990, 'assets/img/java.png', 1, '12990', '104'),
-(10, 'Python', 8690, 'assets/img/python.png', 1, '8690', '106');
-
 -- --------------------------------------------------------
 
 --
@@ -88,7 +80,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `address`, `pmode`, `products`, `amount_paid`) VALUES
 (12, 'sdf', 'sdf@s', 'sdf', 'sdf', 'оплата при доставке', 'One Plus 6(2)', '70000'),
-(13, '123', 'W@W', '2', '2', 'оплата при доставке', 'Unity(1)', '7490');
+(13, '123', 'W@W', '2', '2', 'оплата при доставке', 'Unity(1)', '7490'),
+(14, 'asd', 'asd@asd', 'asd', 'asd', 'Ð˜Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚ ÐºÐ¾ÑˆÐµÐ»ÐµÐº', 'PHP(1)', '8790');
 
 -- --------------------------------------------------------
 
@@ -111,7 +104,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `title`, `price`, `qty`, `img`, `descr`, `code`) VALUES
-(1, 'Mobile app', 14790, 1, 'assets/img/android.png', 'Вы освоите разработку под самую популярную мобильную платформу, даже если до этого вы никогда не программировали.\r\n', '101'),
+(1, 'Mobile app', 14790, 1, 'assets/img/android.png', 'Вы освоите разработку под самую популярную мобильную платформу, даже если до этого вы никогда не программировали.', '101'),
 (2, 'Java script', 6990, 1, 'assets/img/node-js.png', 'Научим программировать на JavaScript — сможете создавать веб-приложения', '102'),
 (3, 'PHP', 8790, 1, 'assets/img/php.png', 'Вы освоите популярный язык для создания сценариев веб-приложений, научитесь работать с базами данных и получите востребованную профессию.', '103'),
 (4, 'Java', 12990, 1, 'assets/img/java.png', 'Изучите основы программирования, синтаксис Java, объектно-ориентированное программирование', '104'),
@@ -188,19 +181,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
