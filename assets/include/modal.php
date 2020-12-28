@@ -144,12 +144,9 @@ if ( isset ($_SESSION['logged_user']) ) {
         <?php if ( isset ($_SESSION['logged_user']) ) : ?>
         Авторизован! <br />
         Привет, <?php echo $_SESSION['logged_user']->login; ?>!<br />
-
-        <a href="/it-school/admin/logout.php">Выйти</a>
-
       </div>
       <div class="modal-footer">
-
+      <a class="badge badge-danger p-3" href="/it-school/admin/logout.php">Выйти</a>
         <?php else : ?>
         Вы не авторизованы<br />
       </div>
@@ -176,16 +173,16 @@ if ( isset ($_SESSION['logged_user']) ) {
       <form action="./" method="POST">
         <div class="modal-body">
           <strong>Ваш логин</strong>
-          <input type="text" name="login" value="<?php echo @$data['login']; ?>"><br />
+          <input class="form-control" type="text" name="login" value="<?php echo @$data['login']; ?>"><br />
 
           <strong>Ваш Email</strong>
-          <input type="email" name="email" value="<?php echo @$data['email']; ?>"><br />
+          <input class="form-control" type="email" name="email" value="<?php echo @$data['email']; ?>"><br />
 
           <strong>Ваш пароль</strong>
-          <input type="password" name="password" value="<?php echo @$data['password']; ?>"><br />
+          <input class="form-control" type="password" name="password" value="<?php echo @$data['password']; ?>"><br />
 
           <strong>Повторите пароль</strong>
-          <input type="password" name="password_2" value="<?php echo @$data['password_2']; ?>"><br />
+          <input class="form-control" type="password" name="password_2" value="<?php echo @$data['password_2']; ?>"><br />
 
           <div class="d-flex justify-content-end mt-2">
             <button type="submit" class="btn btn-primary" name="do_signup">Создать аккаунт</button>
@@ -212,10 +209,10 @@ if ( isset ($_SESSION['logged_user']) ) {
       <div class="modal-body">
         <form action="./" method="POST">
           <strong>Логин</strong>
-          <input type="text" name="login" value="<?php echo @$data['login']; ?>"><br />
+          <input class="form-control" type="text" name="login" value="<?php echo @$data['login']; ?>"><br />
 
           <strong>Пароль</strong>
-          <input type="password" name="password" value="<?php echo @$data['password']; ?>"><br />
+          <input class="form-control" type="password" name="password" value="<?php echo @$data['password']; ?>"><br />
 
           <div class="d-flex justify-content-end mt-2">
             <button type="submit" class="btn btn-primary" name="do_login">Войти</button>
