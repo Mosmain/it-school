@@ -57,9 +57,6 @@ input[type="number"]::-webkit-inner-spin-button {
 				<thead>
 					<tr>
 						<th class="text-center">
-							<label for="id">ID:</label>
-						</th>
-						<th class="text-center">
 							<label for="title">Название:</label>
 						</th>
 						<th class="text-center">
@@ -87,9 +84,7 @@ input[type="number"]::-webkit-inner-spin-button {
 							echo '
 							<form action="update.php" method="POST">
 							<tr>
-								<td>
-									<input class="form-control text-center" style="width: 50px;" type="number" id="id disabledTextInput" name="product_id" value="' . $row['id'] . '" disabled>
-								</td>
+									<input type="hidden" id="id disabledTextInput" name="product_id" value="' . $row['id'] . '">
 								<td>
 									<input class="form-control text-center" style="width: 150px;" type="text" id="title" name="product_title" value="' . $row['title'] . '">
 								</td>
